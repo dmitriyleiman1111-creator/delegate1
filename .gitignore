@@ -1,0 +1,8 @@
+```
+# Database
+instance/events.db
+
+# Logs
+*.log
+server.log
+```
