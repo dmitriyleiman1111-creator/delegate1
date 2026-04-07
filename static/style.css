@@ -1,0 +1,243 @@
+/* Основной стиль */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Навигация */
+.nav-links {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.nav-links a {
+    display: inline-block;
+    background: white;
+    color: #667eea;
+    padding: 12px 25px;
+    margin: 0 10px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.nav-links a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    background: #667eea;
+    color: white;
+}
+
+/* Карточки мероприятий */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.event-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+.event-card.past {
+    opacity: 0.7;
+    background: #f5f5f5;
+}
+
+.event-card h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.event-card .date {
+    color: #764ba2;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.event-card .location {
+    color: #666;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+.event-card .description {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Кнопки действий */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-edit {
+    background: #667eea;
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #5568d3;
+}
+
+.btn-delete {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+}
+
+.btn-add {
+    background: #27ae60;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1rem;
+}
+
+.btn-add:hover {
+    background: #219a52;
+}
+
+/* Формы */
+.form-container {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Flash сообщения */
+.flash-messages {
+    margin-bottom: 20px;
+}
+
+.flash {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.flash.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.flash.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-links a {
+        display: block;
+        margin: 10px auto;
+        max-width: 200px;
+    }
+}
+
+.no-events {
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    padding: 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+}

@@ -4,143 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Календарь мероприятий</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        h1 {
-            color: white;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .add-btn {
-            display: inline-block;
-            background: #4CAF50;
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        .add-btn:hover {
-            background: #45a049;
-        }
-        .flash-messages {
-            margin-bottom: 20px;
-        }
-        .flash {
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        .flash.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        .flash.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
-        }
-        .event-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        .event-card:hover {
-            transform: translateY(-5px);
-        }
-        .event-date {
-            background: #667eea;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-        .event-date.past {
-            background: #999;
-        }
-        .event-title {
-            font-size: 1.4em;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .event-description {
-            color: #666;
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-        .event-location {
-            color: #888;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-        }
-        .event-time {
-            color: #667eea;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .event-actions {
-            display: flex;
-            gap: 10px;
-        }
-        .btn {
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 0.9em;
-            transition: opacity 0.3s;
-        }
-        .btn:hover {
-            opacity: 0.8;
-        }
-        .btn-edit {
-            background: #2196F3;
-            color: white;
-        }
-        .btn-delete {
-            background: #f44336;
-            color: white;
-        }
-        .no-events {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            text-align: center;
-            color: #666;
-            font-size: 1.2em;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
         <h1>📅 Календарь мероприятий</h1>
+        
+        <div class="nav-links">
+            <a href="{{ url_for('add_event') }}">+ Добавить мероприятие</a>
+        </div>
         
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -151,8 +23,6 @@
                 </div>
             {% endif %}
         {% endwith %}
-
-        <a href="{{ url_for('add_event') }}" class="add-btn">+ Добавить мероприятие</a>
 
         {% if events %}
             <div class="events-grid">
