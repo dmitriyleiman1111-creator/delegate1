@@ -6,50 +6,60 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Open Sans', sans-serif;
+    background: #F0F2F8;
     min-height: 100vh;
-    padding: 20px;
-    color: #333;
+    color: #3B4254;
+}
+
+header {
+    background-color: #061A44;
+    color: white;
+    height: 44px;
+}
+
+main {
+    margin: 100px 50px;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: url(https://kuzstu.ru/application/frontend/skin/default/assets/fonts/open-sans-v18-latin_cyrillic-300.eot);
+    src: local("Open Sans Light"), local("OpenSans-Light"), url(https://kuzstu.ru/application/frontend/skin/default/assets/fonts/open-sans-v18-latin_cyrillic-300.eot?#iefix) format("embedded-opentype"), url(https://kuzstu.ru/application/frontend/skin/default/assets/fonts/open-sans-v18-latin_cyrillic-300.woff2) format("woff2"), url(https://kuzstu.ru/application/frontend/skin/default/assets/fonts/open-sans-v18-latin_cyrillic-300.woff) format("woff"), url(https://kuzstu.ru/application/frontend/skin/default/assets/fonts/open-sans-v18-latin_cyrillic-300.ttf) format("truetype"), url(https://kuzstu.ru/application/frontend/skin/default/assets/fonts/open-sans-v18-latin_cyrillic-300.svg#OpenSans) format("svg");
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 h1 {
     text-align: center;
-    color: white;
     margin-bottom: 30px;
-    font-size: 2.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-size: 40px;
+    font-weight: 800;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* Навигация */
 .nav-links {
-    text-align: center;
     margin-bottom: 30px;
 }
 
 .nav-links a {
     display: inline-block;
     background: white;
-    color: #667eea;
     padding: 12px 25px;
     margin: 0 10px;
     text-decoration: none;
-    border-radius: 25px;
     font-weight: bold;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    color: #212529;
 }
 
 .nav-links a:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     background: #667eea;
-    color: white;
 }
 
 /* Карточки мероприятий */
@@ -62,9 +72,7 @@ h1 {
 
 .event-card {
     background: white;
-    border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
 }
 
@@ -78,7 +86,7 @@ h1 {
 }
 
 .event-card h3 {
-    color: #667eea;
+    color: #212529;
     margin-bottom: 10px;
     font-size: 1.4rem;
 }
@@ -110,11 +118,10 @@ h1 {
 }
 
 .btn {
+    border: 1px solid;
     padding: 8px 16px;
     border: none;
-    border-radius: 20px;
     cursor: pointer;
-    font-weight: bold;
     text-decoration: none;
     transition: all 0.3s ease;
     display: inline-block;
@@ -122,16 +129,18 @@ h1 {
 }
 
 .btn-edit {
-    background: #667eea;
+    background: #428bca;
+    border-color: #000000;
     color: white;
 }
 
 .btn-edit:hover {
-    background: #5568d3;
+    background: #428bca;
 }
 
 .btn-delete {
     background: #e74c3c;
+    border-color: #357ebd;
     color: white;
 }
 
@@ -153,11 +162,9 @@ h1 {
 /* Формы */
 .form-container {
     background: white;
-    border-radius: 15px;
     padding: 30px;
     max-width: 600px;
     margin: 0 auto;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
 .form-group {
@@ -176,7 +183,6 @@ h1 {
     width: 100%;
     padding: 12px;
     border: 2px solid #ddd;
-    border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
@@ -199,7 +205,6 @@ h1 {
 
 .flash {
     padding: 15px 20px;
-    border-radius: 8px;
     margin-bottom: 10px;
     font-weight: bold;
 }

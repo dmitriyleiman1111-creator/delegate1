@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <header>
+    </header>
+    <main>
     <div class="container">
-        <h1>📅 Календарь мероприятий</h1>
+        <h1>Календарь мероприятий</h1>
         
         <div class="nav-links">
             <a href="{{ url_for('add_event') }}">+ Добавить мероприятие</a>
@@ -34,17 +37,17 @@
                         </div>
                         <h3 class="event-title">{{ event.title }}</h3>
                         {% if event.event_time %}
-                            <div class="event-time">⏰ {{ event.event_time.strftime('%H:%M') }}</div>
+                            <div class="event-time">{{ event.event_time.strftime('%H:%M') }}</div>
                         {% endif %}
                         {% if event.description %}
                             <p class="event-description">{{ event.description }}</p>
                         {% endif %}
                         {% if event.location %}
-                            <div class="event-location">📍 {{ event.location }}</div>
+                            <div class="event-location">{{ event.location }}</div>
                         {% endif %}
                         <div class="event-actions">
-                            <a href="{{ url_for('edit_event', event_id=event.id) }}" class="btn btn-edit">✏️ Изменить</a>
-                            <a href="{{ url_for('delete_event', event_id=event.id) }}" class="btn btn-delete" onclick="return confirm('Вы уверены?')">🗑️ Удалить</a>
+                            <a href="{{ url_for('edit_event', event_id=event.id) }}" class="btn btn-edit">Изменить</a>
+                            <a href="{{ url_for('delete_event', event_id=event.id) }}" class="btn btn-delete" onclick="return confirm('Вы уверены?')">Удалить</a>
                         </div>
                     </div>
                 {% endfor %}
@@ -55,5 +58,6 @@
             </div>
         {% endif %}
     </div>
+    </main>
 </body>
 </html>
