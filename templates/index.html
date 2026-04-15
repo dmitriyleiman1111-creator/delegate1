@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Календарь мероприятий</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+    </header>
+    <main>
+    <div class="container">
+        <h1>Календарь мероприятий</h1>
+        
+        <div class="nav-links">
+            <a href="{{ url_for('add_event') }}">+ Добавить мероприятие</a>
+        </div>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% if events %}
+            <div class="events-grid">
+                {% for event in events %}
+                    <div class="event-card">
+                        {% set is_past = event.event_date < today %}
+                        <div class="event-date {% if is_past %}past{% endif %}">
+                            {{ event.event_date.strftime('%d.%m.%Y') }}
+                        </div>
+                        <h3 class="event-title">{{ event.title }}</h3>
+                        {% if event.event_time %}
+                            <div class="event-time">{{ event.event_time.strftime('%H:%M') }}</div>
+                        {% endif %}
+                        {% if event.description %}
+                            <p class="event-description">{{ event.description }}</p>
+                        {% endif %}
+                        {% if event.location %}
+                            <div class="event-location">{{ event.location }}</div>
+                        {% endif %}
+                        <div class="event-actions">
+                            <a href="{{ url_for('edit_event', event_id=event.id) }}" class="btn btn-edit">Изменить</a>
+                            <a href="{{ url_for('delete_event', event_id=event.id) }}" class="btn btn-delete" onclick="return confirm('Вы уверены?')">Удалить</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-events">
+                <p>Мероприятий пока нет. Добавьте первое!</p>
+            </div>
+        {% endif %}
+    </div>
+    </main>
+</body>
+</html>
